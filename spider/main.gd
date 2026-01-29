@@ -34,13 +34,17 @@ func _process(delta: float) -> void:
 		
 		if ray == null || target == null:
 			continue;
+			
+		ray.rotation = sin(Engine.get_physics_frames()) * 0.4;
 		
 		if ray.is_colliding():
 			var point = ray.get_collision_point();
 			
+			# distance from collision point and the current foot position
 			var distance = point.distance_to(target.global_position);
 			
-			if distance > 40:
+			if (
+				(distance > 80) or 
+				(target.global_position.distance_to(t_target.global_position) > 80)
+			   ):
 				t_target.global_position = point;
-			
-			#print(point);
