@@ -224,20 +224,24 @@ texture = SubResource("CanvasTexture_tbgi4")
 rotation = -0.008949123
 target_position = Vector2(-81.352394, -72.730934)
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="raycast_2" type="RayCast2D" parent="Skeleton2D/rays" unique_id=238616490]
 rotation = 0.03921803
 target_position = Vector2(93.18162, -73.71014)
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="raycast_3" type="RayCast2D" parent="Skeleton2D/rays" unique_id=739314264]
 target_position = Vector2(88, 77)
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="raycast_4" type="RayCast2D" parent="Skeleton2D/rays" unique_id=770655796]
 rotation = 0.024035016
 target_position = Vector2(-92.97786, 85.25914)
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="hip" type="Bone2D" parent="Skeleton2D" unique_id=1681944049]
 rest = Transform2D(1, 0, 0, 1, 0, 0)

@@ -22,7 +22,9 @@ func lerp(v0: float, v1: float, t: float):
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	
-	$Skeleton2D.global_position = mouse_pos;
+	var player = get_parent().get_node("Player");
+	
+	$Skeleton2D.global_position = lerp($Skeleton2D.global_position, player.global_position, 0.01);
 	
 	for ray_pair in rays:
 		var ray = ray_pair[0];
