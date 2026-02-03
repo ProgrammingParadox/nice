@@ -19,3 +19,4 @@ func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position();
 	
 	$Camera2D.global_position = lerp_v($Camera2D.global_position, $Player.global_position, 0.1);
+	

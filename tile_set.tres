@@ -1,12 +1,27 @@
 [gd_resource type="TileSet" format=3 uid="uid://by7opnvk8ly53"]
 
 [ext_resource type="Texture2D" uid="uid://cpcn3uos4jbac" path="res://assets/tileset_test.png" id="1_kfwk1"]
+[ext_resource type="Texture2D" uid="uid://bybs0fg6ndfqq" path="res://assets/tileset_test_normal.png" id="2_1vrtm"]
+[ext_resource type="Texture2D" uid="uid://2x0hhj5iv5a8" path="res://assets/tileset_test_specular.png" id="3_3ppxi"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kfwk1"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_iw1w7"]
+diffuse_texture = ExtResource("1_kfwk1")
+normal_texture = ExtResource("2_1vrtm")
+specular_texture = ExtResource("3_3ppxi")
+texture_filter = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nq4aq"]
-texture = ExtResource("1_kfwk1")
+texture = SubResource("CanvasTexture_iw1w7")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_kfwk1")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [resource]
-physics_layer_0/collision_layer = 1
+resource_local_to_scene = true
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_nq4aq")

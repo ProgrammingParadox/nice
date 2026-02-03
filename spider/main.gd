@@ -5,6 +5,8 @@ extends Node2D
 	[$Skeleton2D/rays/raycast_2, $targets/target_2, $transitional_targets/t_target_2],
 	[$Skeleton2D/rays/raycast_3, $targets/target_3, $transitional_targets/t_target_3],
 	[$Skeleton2D/rays/raycast_4, $targets/target_4, $transitional_targets/t_target_4],
+	[$Skeleton2D/rays/raycast_5, $targets/target_5, $transitional_targets/t_target_5],
+	[$Skeleton2D/rays/raycast_6, $targets/target_6, $transitional_targets/t_target_6],
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +39,7 @@ func _process(delta: float) -> void:
 		if ray == null || target == null:
 			continue;
 			
-		ray.rotation = sin(Engine.get_physics_frames()) * 0.4;
+		ray.rotation = sin(Engine.get_physics_frames()) * 0.3;
 		
 		if ray.is_colliding():
 			var point = ray.get_collision_point();
