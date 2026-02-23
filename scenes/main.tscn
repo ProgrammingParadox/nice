@@ -32,7 +32,7 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_nq4aq")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
-radius = 8.0
+radius = 6.0
 
 [node name="Node2D" type="Node2D" unique_id=790163914]
 script = ExtResource("1_sugp2")
@@ -54,7 +54,7 @@ position = Vector2(187, -205)
 script = ExtResource("4_tbgi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=269653102]
-scale = Vector2(0.135, 0.135)
+scale = Vector2(0.10937491, 0.10937491)
 texture = ExtResource("4_jyhfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=106834365]

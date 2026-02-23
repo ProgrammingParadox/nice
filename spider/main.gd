@@ -9,46 +9,49 @@ extends Node2D
 	[$Skeleton2D/rays/raycast_6, $targets/target_6, $transitional_targets/t_target_6],
 ]
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func v3(v: Vector2):
-	return Vector3(v.x, v.y, 0.0);
+	return Vector3(v.x, v.y, 0.0)
+
 
 func lerp(v0: float, v1: float, t: float):
-	return (1 - t) * v0 + t * v1;
+	return (1 - t) * v0 + t * v1
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
-	
-	var player = get_parent().get_node("Player");
-	
-	$Skeleton2D.global_position = lerp($Skeleton2D.global_position, player.global_position, 0.01);
-	
+
+	var player = get_parent().get_node("Player")
+
+	$Skeleton2D.global_position = lerp($Skeleton2D.global_position, player.global_position, 0.01)
+
 	for ray_pair in rays:
-		var ray = ray_pair[0];
-		var target = ray_pair[1];
-		var t_target = ray_pair[2];
-		
+		var ray = ray_pair[0]
+		var target = ray_pair[1]
+		var t_target = ray_pair[2]
+
 		if target.global_position.distance_to(t_target.global_position) > 1:
-			target.global_position = lerp(target.global_position, t_target.global_position, 0.2);;
-		
+			target.global_position = lerp(target.global_position, t_target.global_position, 0.2)
+
 		if ray == null || target == null:
-			continue;
-			
-		ray.rotation = sin(Engine.get_physics_frames()) * 0.3;
-		
+			continue
+
+		ray.rotation = sin(Engine.get_physics_frames()) * 0.3
+
 		if ray.is_colliding():
-			var point = ray.get_collision_point();
-			
+			var point = ray.get_collision_point()
+
 			# distance from collision point and the current foot position
-			var distance = point.distance_to(target.global_position);
-			
+			var distance = point.distance_to(target.global_position)
+
 			if (
-				(distance > 80) or 
+				(distance > 80) or
 				(target.global_position.distance_to(t_target.global_position) > 80)
-			   ):
-				t_target.global_position = point;
+			):
+				t_target.global_position = point
