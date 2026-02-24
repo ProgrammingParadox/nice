@@ -34,6 +34,16 @@ sources/0 = SubResource("TileSetAtlasSource_nq4aq")
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
 radius = 6.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+resource_local_to_scene = true
+size = Vector2(10.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(11, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
+size = Vector2(10, 7)
+
 [node name="Node2D" type="Node2D" unique_id=790163914]
 script = ExtResource("1_sugp2")
 
@@ -48,6 +58,7 @@ position = Vector2(-16, -127)
 zoom = Vector2(5.525, 5.525)
 
 [node name="Entity" parent="." unique_id=541092898 instance=ExtResource("3_sugp2")]
+visible = false
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=571530360]
 position = Vector2(187, -205)
@@ -60,10 +71,22 @@ texture = ExtResource("4_jyhfs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=106834365]
 shape = SubResource("CircleShape2D_jyhfs")
 
-[node name="wall_jump_rays" type="Node2D" parent="Player" unique_id=1759959342]
+[node name="wall_jump_areas" type="Node2D" parent="Player" unique_id=1759959342]
 
-[node name="right_wall_ray" type="RayCast2D" parent="Player/wall_jump_rays" unique_id=19151286]
-target_position = Vector2(11, 0)
+[node name="right_wall_area" type="Area2D" parent="Player/wall_jump_areas" unique_id=1238516691]
 
-[node name="left_wall_ray" type="RayCast2D" parent="Player/wall_jump_rays" unique_id=1118667825]
-target_position = Vector2(-11, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/wall_jump_areas/right_wall_area" unique_id=1245634721]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="left_wall_area" type="Area2D" parent="Player/wall_jump_areas" unique_id=1254545159]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/wall_jump_areas/left_wall_area" unique_id=1817546746]
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="top_wall_area" type="Area2D" parent="Player/wall_jump_areas" unique_id=634427759]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/wall_jump_areas/top_wall_area" unique_id=702924275]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_choun")
