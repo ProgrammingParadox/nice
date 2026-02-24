@@ -12,13 +12,15 @@ var time_since_jump_pressed = INF
 
 
 func _physics_process(delta: float) -> void:
+	# keep track of jumping
 	time_since_jump_pressed += delta
 	if Input.is_action_pressed("up"):
 		time_since_jump_pressed = 0
 
+	# For a jump buffer
 	var jump = time_since_jump_pressed < 0.1
 
-	# Add the gravity.
+	# Add the gravity, keep track of time_since_on_ground
 	if is_on_floor():
 		time_since_on_ground = 0
 	else:
@@ -26,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 		time_since_on_ground += delta
 
+	# Rays for detecting walls
 	var left_wall_ray_collided = (
 		$wall_jump_rays/left_wall_ray.is_colliding() and
 		$wall_jump_rays/left_wall_ray.get_collider() is TileMapLayer
@@ -35,6 +38,7 @@ func _physics_process(delta: float) -> void:
 		$wall_jump_rays/right_wall_ray.get_collider() is TileMapLayer
 	)
 
+	# Sliding against walls, keep track of time_since_last_wall_touch
 	if (
 		(left_wall_ray_collided or right_wall_ray_collided)
 		and not is_on_floor()
@@ -48,10 +52,11 @@ func _physics_process(delta: float) -> void:
 
 	#print(time_since_last_wall_touch)
 
-	# Handle jump.
+	# Handle jump
 	if jump and time_since_on_ground < 0.1:
 		velocity.y = JUMP_VELOCITY
 
+	# Wall jumping
 	time_since_last_wall_jump += delta
 	if jump and time_since_last_wall_touch < 0.1:
 		if left_wall_ray_collided and Input.is_action_pressed("right"):
