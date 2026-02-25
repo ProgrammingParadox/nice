@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-const WALL_FRICTION = 0.8
+const MAX_WALL_CLING_SPEED = 100;
 
-var time_since_on_ground = -1
-var time_since_last_wall_touch = -1
-var time_since_last_wall_jump = -1
+var time_since_on_ground = INF
+var time_since_last_wall_touch = INF
+var time_since_last_wall_jump = INF
 
 var time_since_jump_pressed = INF
 
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		time_since_last_wall_touch = 0
 
 		if Input.get_axis("left", "right") != 0 and velocity.y > 0.0:
-			velocity.y *= WALL_FRICTION
+			velocity.y = min(velocity.y, MAX_WALL_CLING_SPEED)
 	else:
 		time_since_last_wall_touch += delta
 
@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	if jump and time_since_on_ground < 0.1:
 		velocity.y = JUMP_VELOCITY
 
-	print("Jump: ", jump, " Time since ground: ", time_since_on_ground, " y vel: ", self.velocity.y)
+	#print("Jump: ", jump, " Time since ground: ", time_since_on_ground, " y vel: ", self.velocity.y)
 
 	# fast falling/variable jump height
 	if not jump and velocity.y < 0:
@@ -82,16 +82,26 @@ func _physics_process(delta: float) -> void:
 		not top_wall_area_collided and
 		jump and
 		time_since_last_wall_touch < 0.1 and
-		time_since_last_wall_jump > 1
+		time_since_last_wall_jump > 0.1
 	):
-		if left_wall_area_collided and Input.is_action_pressed("right"):
-			velocity.x = -JUMP_VELOCITY * 0.7
+		if (
+			left_wall_area_collided and
+			not right_wall_area_collided and
+			Input.is_action_pressed("right")
+		):
+			velocity.x = -JUMP_VELOCITY * 1
 			velocity.y = JUMP_VELOCITY
-		if right_wall_area_collided and Input.is_action_pressed("left"):
-			velocity.x = JUMP_VELOCITY * 0.7
+			
+			time_since_last_wall_jump = 0
+		if (
+			right_wall_area_collided and
+			not left_wall_area_collided and
+			Input.is_action_pressed("left")
+		):
+			velocity.x = JUMP_VELOCITY * 1
 			velocity.y = JUMP_VELOCITY
-
-		time_since_last_wall_jump = INF
+			
+			time_since_last_wall_jump = 0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -99,6 +109,6 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED) 
 
 	move_and_slide()
