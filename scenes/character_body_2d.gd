@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-const MAX_WALL_CLING_SPEED = 100;
+const MAX_WALL_CLING_SPEED = 100
 
 var time_since_on_ground = INF
 var time_since_last_wall_touch = INF
@@ -11,6 +11,7 @@ var time_since_last_wall_jump = INF
 var time_since_jump_pressed = INF
 
 var gravity_mod := 1.0
+var velocity_c_x = 0.0
 
 
 func _physics_process(delta: float) -> void:
@@ -91,7 +92,7 @@ func _physics_process(delta: float) -> void:
 		):
 			velocity.x = -JUMP_VELOCITY * 1
 			velocity.y = JUMP_VELOCITY
-			
+
 			time_since_last_wall_jump = 0
 		if (
 			right_wall_area_collided and
@@ -100,15 +101,18 @@ func _physics_process(delta: float) -> void:
 		):
 			velocity.x = JUMP_VELOCITY * 1
 			velocity.y = JUMP_VELOCITY
-			
+
 			time_since_last_wall_jump = 0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED
+		#velocity.x = direction * SPEED
+		velocity.x = (SPEED * direction)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED) 
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	#velocity.x *= 0.9
 
 	move_and_slide()
