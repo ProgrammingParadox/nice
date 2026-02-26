@@ -75,13 +75,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		time_since_last_wall_touch += delta
 
-	#print(time_since_last_wall_touch)
-
 	# Handle jump
 	if jump and time_since_on_ground < 0.1:
 		velocity.y = JUMP_VELOCITY
-
-	#print("Jump: ", jump, " Time since ground: ", time_since_on_ground, " y vel: ", self.velocity.y)
 
 	# fast falling/variable jump height
 	if not jump and velocity.y < 0:
@@ -130,9 +126,6 @@ func _physics_process(delta: float) -> void:
 			vel *= AIRTIME_X_VEL_MOD
 
 		velocity.x += vel
-
-	#else:
-	#velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	velocity.x *= 0.8
 	velocity.x = min(MAX_SPEED, velocity.x)
