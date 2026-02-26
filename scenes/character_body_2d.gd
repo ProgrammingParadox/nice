@@ -44,12 +44,6 @@ func _physics_process(delta: float) -> void:
 			func(b) -> bool: return b is TileMapLayer,
 		) != -1
 	)
-	var top_wall_area_collided = (
-		$wall_jump_areas/top_wall_area.has_overlapping_bodies() and
-		$wall_jump_areas/top_wall_area.get_overlapping_bodies().find_custom(
-			func(b) -> bool: return b is TileMapLayer,
-		) != -1
-	)
 
 	# Sliding against walls, keep track of time_since_last_wall_touch
 	if (
@@ -80,7 +74,6 @@ func _physics_process(delta: float) -> void:
 	# Wall jumping
 	time_since_last_wall_jump += delta
 	if (
-		not top_wall_area_collided and
 		jump and
 		time_since_last_wall_touch < 0.1 and
 		time_since_last_wall_jump > 0.1
