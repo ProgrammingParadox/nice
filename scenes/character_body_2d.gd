@@ -102,8 +102,6 @@ func _physics_process(delta: float) -> void:
 
 	# Wall jumping
 	time_since_last_wall_jump += delta
-	if left_wall_area_collided or right_wall_area_collided:
-		jumps = 0
 	if (
 		jump and
 		not is_on_floor() and
@@ -120,7 +118,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 
 			time_since_last_wall_jump = 0
-			jumps += 1
+			jumps = 1
 
 			dead_actions.append("right")
 		if (
@@ -133,7 +131,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 
 			time_since_last_wall_jump = 0
-			jumps += 1
+			jumps = 1
 
 			dead_actions.append("left")
 
