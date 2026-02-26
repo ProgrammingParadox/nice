@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 200.0 # actually acceleration...
 const MAX_SPEED = 200.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -350.0
 const WALL_JUMP_VELOCITY = JUMP_VELOCITY * 0.7
 const MAX_WALL_CLING_SPEED = 100
 const AIRTIME_X_VEL_MOD = 0.9
@@ -12,6 +12,8 @@ var time_since_last_wall_touch = INF
 var time_since_last_wall_jump = INF
 
 var time_since_jump_pressed = INF
+
+var jumps = 0
 
 var gravity_mod := 1.0
 var velocity_c_x = 0.0
@@ -35,7 +37,7 @@ func _physics_process(delta: float) -> void:
 
 	# keep track of jumping
 	time_since_jump_pressed += delta
-	if Input.is_action_pressed("up"):
+	if not "up" in dead_actions and Input.is_action_pressed("up"):
 		time_since_jump_pressed = 0
 
 	# For a jump buffer
@@ -44,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity, keep track of time_since_on_ground
 	if is_on_floor():
 		time_since_on_ground = 0
+		jumps = 0
 	else:
 		velocity += (get_gravity() * gravity_mod) * delta
 
@@ -76,17 +79,31 @@ func _physics_process(delta: float) -> void:
 		time_since_last_wall_touch += delta
 
 	# Handle jump
-	if jump and time_since_on_ground < 0.1:
+	if (
+		not "up" in dead_actions and
+		jump and
+		(
+			time_since_on_ground < 0.1 or
+			(
+				jumps != 0 and jumps < 2 # double jump
+			)
+		)
+	):
 		velocity.y = JUMP_VELOCITY
+		jumps += 1
+
+		dead_actions.append("up")
 
 	# fast falling/variable jump height
-	if not jump and velocity.y < 0:
+	if not Input.is_action_pressed("up") and velocity.y < 0:
 		gravity_mod = 3
 	else:
 		gravity_mod = 1
 
 	# Wall jumping
 	time_since_last_wall_jump += delta
+	if left_wall_area_collided or right_wall_area_collided:
+		jumps = 0
 	if (
 		jump and
 		not is_on_floor() and
@@ -103,6 +120,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 
 			time_since_last_wall_jump = 0
+			jumps += 1
 
 			dead_actions.append("right")
 		if (
@@ -115,6 +133,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 
 			time_since_last_wall_jump = 0
+			jumps += 1
 
 			dead_actions.append("left")
 
@@ -131,3 +150,5 @@ func _physics_process(delta: float) -> void:
 	velocity.x = min(MAX_SPEED, velocity.x)
 
 	move_and_slide()
+
+	print(jumps, " ", dead_actions)
