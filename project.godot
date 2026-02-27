@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1930
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
+display_server/driver.linuxbsd="wayland"
 
 [editor_plugins]
 
@@ -81,6 +82,7 @@ dash={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

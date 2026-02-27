@@ -1,22 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 200.0 # actually acceleration...
-const MAX_SPEED = 200.0
-const JUMP_VELOCITY = -350.0
-const WALL_JUMP_VELOCITY = JUMP_VELOCITY * 0.7
-const MAX_WALL_CLING_SPEED = 100
-const AIRTIME_X_VEL_MOD = 0.9
+@export var PlayerContext: Resource;
 
-var time_since_on_ground = INF
-var time_since_last_wall_touch = INF
-var time_since_last_wall_jump = INF
 
-var time_since_jump_pressed = INF
-
-var jumps = 0
-
-var gravity_mod := 1.0
-var velocity_c_x = 0.0
 
 var dead_actions = []
 
@@ -37,7 +23,8 @@ func _physics_process(delta: float) -> void:
 
 	# keep track of jumping
 	time_since_jump_pressed += delta
-	if not "up" in dead_actions and Input.is_action_pressed("up"):
+	if Input.is_action_just_pressed("up"):
+		print("jump")
 		time_since_jump_pressed = 0
 
 	# For a jump buffer
@@ -80,19 +67,15 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump
 	if (
-		not "up" in dead_actions and
 		jump and
-		(
-			time_since_on_ground < 0.1 or
-			(
-				jumps != 0 and jumps < 2 # double jump
-			)
-		)
+		time_since_on_ground < 0.1
 	):
+		print(jumps, " ", dead_actions, " ", time_since_on_ground)
+		
+		time_since_on_ground = 0
+		
 		velocity.y = JUMP_VELOCITY
 		jumps += 1
-
-		dead_actions.append("up")
 
 	# fast falling/variable jump height
 	if not Input.is_action_pressed("up") and velocity.y < 0:
@@ -135,18 +118,9 @@ func _physics_process(delta: float) -> void:
 
 			dead_actions.append("left")
 
-	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		var vel = (SPEED * direction * delta * 20)
-		if not is_on_floor():
-			vel *= AIRTIME_X_VEL_MOD
-
-		velocity.x += vel
+	
 
 	velocity.x *= 0.8
 	velocity.x = min(MAX_SPEED, velocity.x)
 
 	move_and_slide()
-
-	print(jumps, " ", dead_actions)

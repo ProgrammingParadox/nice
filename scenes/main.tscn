@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://cdkwoo007l678" path="res://scenes/character_body_2d.gd" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://2x0hhj5iv5a8" path="res://assets/tileset_test_specular.png" id="4_ya4ey"]
+[ext_resource type="Script" uid="uid://ckyg0cjvy10r8" path="res://assets/PlayerContext.gd" id="8_85g3d"]
+[ext_resource type="Script" uid="uid://cdsjnnbht6mhq" path="res://assets/states/grounded.gd" id="10_choun"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kfwk1"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -61,6 +63,7 @@ visible = false
 [node name="Player" type="CharacterBody2D" parent="." unique_id=571530360]
 position = Vector2(187, -205)
 script = ExtResource("4_tbgi4")
+PlayerContext = ExtResource("8_85g3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=269653102]
 scale = Vector2(0.10937491, 0.10937491)
@@ -82,3 +85,12 @@ shape = SubResource("RectangleShape2D_tipki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/wall_jump_areas/left_wall_area" unique_id=1817546746]
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="StateMachine" type="Node" parent="Player" unique_id=285190700]
+
+[node name="grounded" type="Node" parent="Player/StateMachine" unique_id=1873660985]
+script = ExtResource("10_choun")
+
+[node name="airborne" type="Node" parent="Player/StateMachine" unique_id=1152756473]
+
+[node name="wall_cling" type="Node" parent="Player/StateMachine" unique_id=1119981727]
