@@ -6,4 +6,5 @@ extends Resource
 @export var JUMP_VELOCITY = -350.0
 @export var WALL_JUMP_VELOCITY = JUMP_VELOCITY * 0.7
 @export var MAX_WALL_CLING_SPEED = 100
-@export var AIRTIME_X_VEL_MOD = 0.9
+@export var GROUND_FRICTION = 0.9
+@export var AIR_FRICTION = 0.9

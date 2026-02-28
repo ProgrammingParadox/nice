@@ -8,11 +8,11 @@ func physics_update(delta: float) -> void:
 	player.velocity.x += stats.ACCELERATION * direction * delta * 20
 	
 	player.velocity.x = clamp(player.velocity.x, -stats.MAX_SPEED, stats.MAX_SPEED)
-	player.velocity.x *= stats.GROUND_FRICTION
+	player.velocity.x *= stats.AIR_FRICTION
+	
+	player.velocity += player.get_gravity() * delta
 	
 	player.move_and_slide()
 
-	if not player.is_on_floor():
-		finished.emit(AIRBORNE)
-	elif Input.is_action_just_pressed("up"):
-		finished.emit(JUMP)
+	if player.is_on_floor():
+		finished.emit(GROUNDED)
