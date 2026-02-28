@@ -19,3 +19,10 @@ func _ready() -> void:
 	
 	context = player.context
 	stats   = player.stats
+	
+func _physics_process(delta: float) -> void:
+	context.time_since_jump_pressed += delta
+	context.time_since_on_ground += delta
+	
+	if Input.is_action_just_pressed("up"):
+		context.time_since_jump_pressed = 0

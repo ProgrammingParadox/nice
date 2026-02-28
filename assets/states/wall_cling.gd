@@ -4,6 +4,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
+	super(delta)
+	
 	player.velocity.y += player.gravity * delta
 	
 	if Input.get_axis("left", "right") != 0 and player.velocity.y > 0.0:
