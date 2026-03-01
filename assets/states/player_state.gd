@@ -22,8 +22,18 @@ func _ready() -> void:
 	stats   = player.stats
 	
 func _physics_process(delta: float) -> void:
-	context.time_since_jump_pressed += delta
-	context.time_since_on_ground += delta
+	context.time_since_jump_pressed      += delta
+	context.time_since_last_jump_pressed += delta
+	context.time_since_on_ground         += delta
+	context.time_since_left_wall_touch   += delta
+	context.time_since_right_wall_touch  += delta
 	
 	if Input.is_action_just_pressed("up"):
 		context.time_since_jump_pressed = 0
+	if Input.is_action_pressed("up"):
+		context.time_since_last_jump_pressed = 0
+	
+	if player.left_wall_area_collided:
+		context.time_since_left_wall_touch = 0
+	if player.right_wall_area_collided:
+		context.time_since_right_wall_touch = 0

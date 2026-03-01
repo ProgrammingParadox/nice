@@ -1,28 +1,29 @@
 extends PlayerState
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(previous_state_path: String, data := { }) -> void:
 	pass
+
 
 func physics_update(delta: float) -> void:
 	super(delta)
-	
+
 	var direction := Input.get_axis("left", "right")
 	player.velocity.x += stats.ACCELERATION * direction * delta * 20
-	
+
 	player.velocity.x = clamp(player.velocity.x, -stats.MAX_SPEED, stats.MAX_SPEED)
 	player.velocity.x *= stats.AIR_FRICTION
-	
+
 	player.velocity += player.get_gravity() * delta
-	
+
 	player.move_and_slide()
 
 	if (
-		Input.is_action_pressed("up") and (
-			( player.left_wall_area_collided and direction > 0 ) or 
-			( player.right_wall_area_collided and direction < 0 )
+		context.time_since_last_jump_pressed < 0.5 and (
+			(context.time_since_left_wall_touch < 0.5 and Input.is_action_just_pressed("right")) or
+			(context.time_since_right_wall_touch < 0.5 and Input.is_action_just_pressed("left"))
 		)
 	):
-		finished.emit(WALL_JUMP, {"direction": direction})
+		finished.emit(WALL_JUMP, { "direction": direction })
 		return
 	if (
 		(
@@ -34,7 +35,7 @@ func physics_update(delta: float) -> void:
 		finished.emit(WALL_CLING, { "direction": direction })
 		return
 	if (
-		context.time_since_on_ground < 0.5 and 
+		context.time_since_on_ground < 0.5 and
 		context.time_since_jump_pressed < 0.1
 	):
 		finished.emit(JUMP)
