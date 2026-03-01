@@ -17,6 +17,9 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
+	if Input.is_action_just_pressed("up") and context.jumps < 3:
+		finished.emit(JUMP)
+		return
 	if (
 		context.time_since_last_jump_pressed < 0.5 and (
 			(context.time_since_left_wall_touch < 0.5 and Input.is_action_just_pressed("right")) or
