@@ -4,6 +4,7 @@ const GROUNDED = "grounded"
 const AIRBORNE = "airborne"
 const WALL_CLING = "wall_cling"
 const JUMP = "jump"
+const WALL_JUMP = "wall_jump"
 
 var player: Player
 

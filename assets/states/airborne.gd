@@ -17,9 +17,28 @@ func physics_update(delta: float) -> void:
 	player.move_and_slide()
 
 	if (
+		Input.is_action_pressed("up") and (
+			( player.left_wall_area_collided and direction > 0 ) or 
+			( player.right_wall_area_collided and direction < 0 )
+		)
+	):
+		finished.emit(WALL_JUMP, {"direction": direction})
+		return
+	if (
+		(
+			player.left_wall_area_collided and direction < 0
+		) or (
+			player.right_wall_area_collided and direction > 0
+		)
+	):
+		finished.emit(WALL_CLING, { "direction": direction })
+		return
+	if (
 		context.time_since_on_ground < 0.5 and 
 		context.time_since_jump_pressed < 0.1
 	):
 		finished.emit(JUMP)
-	elif player.is_on_floor():
+		return
+	if player.is_on_floor():
 		finished.emit(GROUNDED)
+		return

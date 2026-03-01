@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c2sqpcb3ncte7" path="res://assets/states/airborne.gd" id="7_oprun"]
 [ext_resource type="Script" uid="uid://cb4pme08bg501" path="res://assets/states/wall_cling.gd" id="8_a8ls1"]
 [ext_resource type="Script" uid="uid://bgv4vqs3445a7" path="res://assets/states/jump.gd" id="9_qfm1y"]
+[ext_resource type="Script" uid="uid://bci3omhklve2b" path="res://assets/states/wall_jump.gd" id="10_y4r1p"]
 
 [sub_resource type="Resource" id="Resource_jkv2x"]
 script = ExtResource("2_y4r1p")
@@ -75,3 +76,6 @@ script = ExtResource("8_a8ls1")
 
 [node name="jump" type="Node" parent="StateMachine" unique_id=793558590]
 script = ExtResource("9_qfm1y")
+
+[node name="wall_jump" type="Node" parent="StateMachine" unique_id=1836069307]
+script = ExtResource("10_y4r1p")
