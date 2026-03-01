@@ -45,7 +45,6 @@ position = Vector2(-16, -127)
 zoom = Vector2(5.525, 5.525)
 
 [node name="Entity" parent="." unique_id=541092898 instance=ExtResource("3_sugp2")]
-visible = false
 
 [node name="Player" parent="." unique_id=1835408727 instance=ExtResource("7_o6xl0")]
 position = Vector2(-271, -130)
