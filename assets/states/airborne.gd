@@ -17,17 +17,19 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
-	if Input.is_action_just_pressed("up") and context.jumps < 3:
-		finished.emit(JUMP)
-		return
 	if (
-		context.time_since_last_jump_pressed < 0.5 and (
+		context.time_since_last_jump_pressed < 0.1 and (
 			(context.time_since_left_wall_touch < 0.5 and Input.is_action_just_pressed("right")) or
 			(context.time_since_right_wall_touch < 0.5 and Input.is_action_just_pressed("left"))
 		)
 	):
 		finished.emit(WALL_JUMP, { "direction": direction })
 		return
+
+	if Input.is_action_just_pressed("up") and context.jumps < stats.MAX_JUMPS:
+		finished.emit(JUMP)
+		return
+
 	if (
 		(
 			player.left_wall_area_collided and direction < 0
@@ -37,12 +39,15 @@ func physics_update(delta: float) -> void:
 	):
 		finished.emit(WALL_CLING, { "direction": direction })
 		return
+
+	# coyote
 	if (
 		context.time_since_on_ground < 0.5 and
 		context.time_since_jump_pressed < 0.1
 	):
 		finished.emit(JUMP)
 		return
+
 	if player.is_on_floor():
 		finished.emit(GROUNDED)
 		return

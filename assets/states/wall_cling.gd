@@ -4,6 +4,7 @@ var from_direction = 0
 
 
 func enter(previous_state_path: String, data := { }) -> void:
+	print(from_direction)
 	from_direction = data.direction
 
 
@@ -19,15 +20,23 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
-	context.jumps = 0
+	#context.jumps = 0
+
+	#print(context.time_since_last_jump_pressed < 0.1)
+	#print((context.time_since_right_wall_touch < 0.5 and Input.is_action_just_pressed("left")))
 
 	if (
-		context.time_since_last_jump_pressed < 0.5 and (
-			(context.time_since_left_wall_touch < 0.5 and Input.is_action_just_pressed("right")) or
-			(context.time_since_right_wall_touch < 0.5 and Input.is_action_just_pressed("left"))
+		context.time_since_last_jump_pressed < 0.1 and (
+			(context.time_since_left_wall_touch < 0.5 and context.time_since_right_pressed < 0.5) or
+			(context.time_since_right_wall_touch < 0.5 and context.time_since_left_pressed < 0.5)
 		)
 	):
+		print("wassup")
 		finished.emit(WALL_JUMP, { "direction": -from_direction })
+		return
+
+	if context.time_since_jump_pressed < 0.1 and context.jumps < stats.MAX_JUMPS:
+		finished.emit(JUMP)
 		return
 
 	if direction == 0 or not (
