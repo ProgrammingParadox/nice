@@ -4,7 +4,6 @@ var from_direction = 0
 
 
 func enter(previous_state_path: String, data := { }) -> void:
-	print(from_direction)
 	from_direction = data.direction
 
 
@@ -31,7 +30,6 @@ func physics_update(delta: float) -> void:
 			(context.time_since_right_wall_touch < 0.5 and context.time_since_left_pressed < 0.5)
 		)
 	):
-		print("wassup")
 		finished.emit(WALL_JUMP, { "direction": -from_direction })
 		return
 
