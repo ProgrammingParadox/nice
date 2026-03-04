@@ -1,7 +1,11 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := { }) -> void:
-	pass
+	context.gravity_mod = 1
+
+
+func exit() -> void:
+	context.gravity_mod = 1
 
 
 func physics_update(delta: float) -> void:
@@ -16,9 +20,12 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = clamp(player.velocity.x, -stats.MAX_SPEED, stats.MAX_SPEED)
 	player.velocity.x *= stats.AIR_FRICTION
 
-	player.velocity += player.get_gravity() * delta
+	player.velocity += player.get_gravity() * context.gravity_mod * delta
 
 	player.move_and_slide()
+
+	if not Input.is_action_pressed("up"):
+		context.gravity_mod = 1.5
 
 	if (
 		context.time_since_last_jump_pressed < 0.1 and (
