@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bc5xvnk87xudt"]
 
-[ext_resource type="Script" uid="uid://dldk1hdfyut57" path="res://assets/player.gd" id="1_ur7pv"]
-[ext_resource type="Script" uid="uid://li3n0frmmpyu" path="res://assets/player_stats.gd" id="2_y4r1p"]
-[ext_resource type="Script" uid="uid://ckyg0cjvy10r8" path="res://assets/player_context.gd" id="3_d2wvv"]
+[ext_resource type="Script" uid="uid://dldk1hdfyut57" path="res://assets/player/player.gd" id="1_ur7pv"]
+[ext_resource type="Script" uid="uid://li3n0frmmpyu" path="res://assets/player/player_stats.gd" id="2_y4r1p"]
+[ext_resource type="Script" uid="uid://ckyg0cjvy10r8" path="res://assets/player/player_context.gd" id="3_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="4_3v2ag"]
 [ext_resource type="Script" uid="uid://b6hidg120x05f" path="res://assets/state_machine.gd" id="5_jej6c"]
-[ext_resource type="Script" uid="uid://cdsjnnbht6mhq" path="res://assets/states/grounded.gd" id="6_f1ej7"]
-[ext_resource type="Script" uid="uid://c2sqpcb3ncte7" path="res://assets/states/airborne.gd" id="7_oprun"]
-[ext_resource type="Script" uid="uid://cb4pme08bg501" path="res://assets/states/wall_cling.gd" id="8_a8ls1"]
-[ext_resource type="Script" uid="uid://bgv4vqs3445a7" path="res://assets/states/jump.gd" id="9_qfm1y"]
-[ext_resource type="Script" uid="uid://bci3omhklve2b" path="res://assets/states/wall_jump.gd" id="10_y4r1p"]
+[ext_resource type="Script" uid="uid://cdsjnnbht6mhq" path="res://assets/player/states/grounded.gd" id="6_f1ej7"]
+[ext_resource type="Script" uid="uid://c2sqpcb3ncte7" path="res://assets/player/states/airborne.gd" id="7_oprun"]
+[ext_resource type="Script" uid="uid://cb4pme08bg501" path="res://assets/player/states/wall_cling.gd" id="8_a8ls1"]
+[ext_resource type="Script" uid="uid://bgv4vqs3445a7" path="res://assets/player/states/jump.gd" id="9_qfm1y"]
+[ext_resource type="Script" uid="uid://bci3omhklve2b" path="res://assets/player/states/wall_jump.gd" id="10_y4r1p"]
 
 [sub_resource type="Resource" id="Resource_jkv2x"]
 script = ExtResource("2_y4r1p")

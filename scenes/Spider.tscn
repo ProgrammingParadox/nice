@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3yihenu8xs7"]
 
-[ext_resource type="Script" uid="uid://dxi73upxbqdxx" path="res://spider/main.gd" id="1_fdnuv"]
+[ext_resource type="Script" uid="uid://dxi73upxbqdxx" path="res://assets/spider/main.gd" id="1_fdnuv"]
 [ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="2_l7dlg"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_6bblw"]
@@ -572,7 +572,7 @@ scale = Vector2(11.454099, 1)
 [node name="calf_5" type="Bone2D" parent="Skeleton2D/hip/thigh_5" unique_id=1831969814]
 position = Vector2(50.624165, 15.828877)
 rotation = 0.2457477
-scale = Vector2(0.99999905, 0.99999905)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.8164698, 0.5773885, -0.5773885, 0.8164698, 23.000647, 10.0003395)
 metadata/_local_pose_override_enabled_ = true
 

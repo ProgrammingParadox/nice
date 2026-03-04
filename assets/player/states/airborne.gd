@@ -26,7 +26,6 @@ func physics_update(delta: float) -> void:
 			(context.time_since_right_wall_touch < 0.5 and context.time_since_left_pressed < 0.5)
 		)
 	):
-		# print("wall jump from airborne ", direction)
 		finished.emit(WALL_JUMP, { "direction": last_direction })
 		return
 

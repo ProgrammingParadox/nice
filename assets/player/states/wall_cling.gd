@@ -14,15 +14,9 @@ func physics_update(delta: float) -> void:
 	var aligned = sign(from_direction) == sign(direction)
 
 	player.velocity += player.get_gravity() * delta
-
 	player.velocity.y = min(player.velocity.y, stats.MAX_WALL_CLING_SPEED)
 
 	player.move_and_slide()
-
-	#context.jumps = 0
-
-	#print(context.time_since_last_jump_pressed < 0.1)
-	#print((context.time_since_right_wall_touch < 0.5 and Input.is_action_just_pressed("left")))
 
 	if (
 		context.time_since_last_jump_pressed < 0.1 and (

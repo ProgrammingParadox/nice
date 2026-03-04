@@ -23,7 +23,3 @@ var right_wall_area_collided: bool:
 				func(b) -> bool: return b is TileMapLayer,
 			) != -1
 		)
-
-	#func _physics_process(delta: float) -> void:
-	#print(context.time_since_last_jump_pressed)
-	#print(context.time_since_jump_pressed < 0.5, " ", context.time_since_on_ground < 0.5)
