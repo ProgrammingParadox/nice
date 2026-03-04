@@ -27,6 +27,10 @@ func physics_update(delta: float) -> void:
 	if not Input.is_action_pressed("up"):
 		context.gravity_mod = 1.5
 
+	if Input.is_action_just_pressed("down"):
+		#context.gravity_mod = 4
+		player.velocity.y += 300
+
 	if (
 		context.time_since_last_jump_pressed < 0.1 and (
 			(context.time_since_left_wall_touch < 0.5 and context.time_since_right_pressed < 0.5) or
