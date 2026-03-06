@@ -39,6 +39,8 @@ script = ExtResource("1_ur7pv")
 stats = SubResource("Resource_jkv2x")
 context = SubResource("Resource_jbj1t")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=726454919]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=779158281]
 scale = Vector2(0.10937491, 0.10937491)
 texture = ExtResource("4_3v2ag")
