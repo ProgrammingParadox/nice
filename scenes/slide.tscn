@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bicw8d64g5bi3"]
+
+[sub_resource type="SystemFont" id="SystemFont_844jt"]
+font_names = PackedStringArray("Iosevka")
+font_weight = 900
+multichannel_signed_distance_field = true
+msdf_size = 100
+
+[sub_resource type="FontVariation" id="FontVariation_tk4gx"]
+base_font = SubResource("SystemFont_844jt")
+spacing_glyph = -2
+
+[sub_resource type="LabelSettings" id="LabelSettings_844jt"]
+font = SubResource("FontVariation_tk4gx")
+font_size = 40
+font_color = Color(0.21435988, 0.21435991, 0.21435988, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_tk4gx"]
+font_names = PackedStringArray("Iosevka")
+multichannel_signed_distance_field = true
+
+[sub_resource type="FontVariation" id="FontVariation_xi4xi"]
+base_font = SubResource("SystemFont_tk4gx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dympr"]
+font = SubResource("FontVariation_xi4xi")
+font_size = 24
+font_color = Color(0.47063273, 0.47063267, 0.47063267, 1)
+
+[node name="Slide" type="Node2D" unique_id=2017501157]
+z_index = -1
+
+[node name="Control" type="Control" parent="." unique_id=420201175]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1988605389]
+layout_mode = 0
+offset_right = 515.675
+offset_bottom = 419.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=1606046276]
+layout_mode = 2
+text = "Title Test"
+label_settings = SubResource("LabelSettings_844jt")
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer" unique_id=313579461]
+layout_mode = 2
+text = "Some description"
+label_settings = SubResource("LabelSettings_dympr")
