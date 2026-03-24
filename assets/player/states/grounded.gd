@@ -9,7 +9,14 @@ func physics_update(delta: float) -> void:
 	super(delta)
 
 	var direction := Input.get_axis("left", "right")
-	player.velocity.x += stats.ACCELERATION * direction * delta * 20
+	var diff = context.time_since_right_pressed - context.time_since_left_pressed
+	var last_direction = 1.0 if diff < 0 else -1.0
+
+	var both = Input.is_action_pressed("left") and Input.is_action_pressed("right")
+
+	var r_direction = last_direction if both else direction
+
+	player.velocity.x += stats.ACCELERATION * r_direction * delta * 20
 
 	player.velocity.x = clamp(player.velocity.x, -stats.MAX_SPEED, stats.MAX_SPEED)
 	player.velocity.x *= stats.GROUND_FRICTION
