@@ -26,6 +26,8 @@ func physics_update(delta: float) -> void:
 	context.time_since_on_ground = 0
 	context.jumps = 0
 
+	context.dash_vel = Vector2.ZERO
+
 	if not player.is_on_floor():
 		finished.emit(AIRBORNE)
 	elif context.time_since_jump_pressed < 0.1:

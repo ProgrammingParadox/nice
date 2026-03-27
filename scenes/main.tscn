@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2x0hhj5iv5a8" path="res://assets/tileset_test_specular.png" id="4_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://ukpj28cyb6rb" path="res://assets/tileset_2.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bc5xvnk87xudt" path="res://scenes/player.tscn" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="9_85g3d"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kfwk1"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -37,6 +38,9 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_nq4aq")
 sources/1 = SubResource("TileSetAtlasSource_choun")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
+size = Vector2(46, 46)
+
 [node name="Node2D" type="Node2D" unique_id=790163914]
 script = ExtResource("1_sugp2")
 
@@ -52,6 +56,21 @@ position = Vector2(-803, 514)
 zoom = Vector2(2.99, 2.99)
 
 [node name="Entity" parent="." unique_id=541092898 instance=ExtResource("3_sugp2")]
+visible = false
 
 [node name="Player" parent="." unique_id=1835408727 instance=ExtResource("7_o6xl0")]
 position = Vector2(1302, -175)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=2033587907]
+unique_name_in_owner = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Enemies" unique_id=762673375]
+position = Vector2(1548, -66)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D" unique_id=546506713]
+self_modulate = Color(1, 0.47000003, 0.47000003, 1)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("9_85g3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D" unique_id=1421565386]
+shape = SubResource("RectangleShape2D_choun")

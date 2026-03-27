@@ -15,3 +15,5 @@ var time_since_right_pressed = INF
 var jumps = 0
 
 var gravity_mod := 1.0
+
+var dash_vel := Vector2.ZERO

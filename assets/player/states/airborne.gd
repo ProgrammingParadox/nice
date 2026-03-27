@@ -26,6 +26,11 @@ func physics_update(delta: float) -> void:
 
 	player.velocity += player.get_gravity() * context.gravity_mod * delta
 
+	#if abs(context.dash_vel.length()) > 0.1:
+	player.velocity += context.dash_vel
+
+	context.dash_vel *= 0.8
+
 	player.move_and_slide()
 
 	if not Input.is_action_pressed("up"):
@@ -68,4 +73,8 @@ func physics_update(delta: float) -> void:
 
 	if player.is_on_floor():
 		finished.emit(GROUNDED)
+		return
+
+	if Input.is_action_just_pressed("dash"):
+		finished.emit(DASH)
 		return

@@ -10,3 +10,4 @@ extends Resource
 @export var MAX_WALL_CLING_SPEED = 100
 @export var GROUND_FRICTION = 0.9
 @export var AIR_FRICTION = 0.9
+@export var DASH_VELOCITY = 500.0
