@@ -11,3 +11,4 @@ extends Resource
 @export var GROUND_FRICTION = 0.9
 @export var AIR_FRICTION = 0.9
 @export var DASH_VELOCITY = 500.0
+@export var MAX_AUTOAIM_DASH_DISTANCE = 500.0

@@ -19,6 +19,7 @@ MAX_SPEED = 300.0
 WALL_JUMP_VERTICAL_VELOCITY = -350
 GROUND_FRICTION = 0.8
 AIR_FRICTION = 0.8
+DASH_VELOCITY = 250.0
 metadata/_custom_type_script = "uid://li3n0frmmpyu"
 
 [sub_resource type="Resource" id="Resource_jbj1t"]
@@ -85,3 +86,7 @@ script = ExtResource("10_y4r1p")
 
 [node name="dash" type="Node" parent="StateMachine" unique_id=1983874356]
 script = ExtResource("11_d2wvv")
+
+[node name="rays" type="Node2D" parent="." unique_id=615842004]
+
+[node name="dash_ray" type="RayCast2D" parent="rays" unique_id=1388442682]
