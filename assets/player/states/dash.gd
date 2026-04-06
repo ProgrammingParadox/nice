@@ -6,7 +6,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 	# I don't like this at all, but we're in different scenes
 	var enemies = get_node("../../../Enemies").get_children()
 
-	var ray: RayCast2D = player.get_node("rays/dash_ray");
+	var ray: RayCast2D = player.get_node("rays/dash_ray")
 
 	var closest_distance = INF
 	var closest_ref
@@ -53,11 +53,21 @@ func enter(previous_state_path: String, data := { }) -> void:
 		finished.emit(AIRBORNE)
 		return
 
-	var direction: Vector2 = (closest_ref.position - player.position).normalized()
+	#var direction: Vector2 = (closest_ref.position - player.position).normalized()
 
-	context.dash_vel = direction * stats.DASH_VELOCITY
+	# velocity-based dash
+	#context.dash_vel = direction * stats.DASH_VELOCITY
 
-	finished.emit(AIRBORNE)
+	#finished.emit(AIRBORNE)
+
+	# Dashing-state based
+	player.velocity = Vector2.ZERO
+	finished.emit(
+		DASHING,
+		{
+			"position": closest_ref.position,
+		},
+	)
 
 
 func physics_update(delta: float) -> void:

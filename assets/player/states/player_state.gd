@@ -7,6 +7,7 @@ const WALL_CLING = "wall_cling"
 const JUMP = "jump"
 const WALL_JUMP = "wall_jump"
 const DASH = "dash"
+const DASHING = "dashing"
 
 var player: Player
 
