@@ -19,9 +19,9 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 
 var cancel_actions = [
-	"left",
-	"up",
-	"right",
+	#"left",
+	#"up",
+	#"right",
 	"down",
 ]
 
