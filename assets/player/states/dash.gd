@@ -14,8 +14,10 @@ func enter(previous_state_path: String, data := { }) -> void:
 	var closest_ref
 	for i in range(len(enemies)):
 		var enemy = enemies.get(i)
-		var distance = player.position.distance_to(enemy.position)
+		if enemy.is_dead == true:
+			continue
 
+		var distance = player.position.distance_to(enemy.position)
 		if distance < stats.MIN_AUTOAIM_DASH_DISTANCE:
 			continue
 
@@ -67,6 +69,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 		DASHING,
 		{
 			"position": closest_ref.position,
+			"reference": closest_ref,
 		},
 	)
 

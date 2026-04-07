@@ -1,6 +1,7 @@
 extends PlayerState
 
 var attacking_position: Vector2
+var attacking_reference
 
 
 func enter(previous_state_path: String, data := { }) -> void:
@@ -9,6 +10,9 @@ func enter(previous_state_path: String, data := { }) -> void:
 		finished.emit("airborne")
 
 		return
+
+	if data.has("reference"):
+		attacking_reference = data.reference
 
 	attacking_position = data.position
 
@@ -37,6 +41,10 @@ func physics_update(delta: float) -> void:
 		player.position += direction * dash_speed
 	else:
 		player.position = attacking_position
+
+		if (attacking_reference != null):
+			attacking_reference.is_dead = true
+
 		finished.emit(AIRBORNE)
 
 	for action in cancel_actions:
