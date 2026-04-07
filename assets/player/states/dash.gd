@@ -3,6 +3,8 @@ extends PlayerState
 func enter(previous_state_path: String, data := { }) -> void:
 	#player.velocity.y = stats.JUMP_VELOCITY
 
+	context.jumps = 1
+
 	# I don't like this at all, but we're in different scenes
 	var enemies = get_node("../../../Enemies").get_children()
 
