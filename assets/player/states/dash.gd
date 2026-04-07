@@ -12,7 +12,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 	var closest_ref
 	for i in range(len(enemies)):
 		var enemy = enemies.get(i)
-		var distance = player.position.distance_squared_to(enemy.position)
+		var distance = player.position.distance_to(enemy.position)
 
 		if distance < stats.MIN_AUTOAIM_DASH_DISTANCE:
 			continue
@@ -24,17 +24,13 @@ func enter(previous_state_path: String, data := { }) -> void:
 		ray.target_position = enemy.position - player.position
 		ray.force_raycast_update()
 		if ray.is_colliding():
-			print("collision!")
 			var collision = ray.get_collider()
 			var point = ray.get_collision_point()
 
-			print(collision, " | ", enemy)
 			if collision == enemy:
-				print("collision is the intended enemy")
 				intersects = true
 
 		if not intersects:
-			print("collision was not the intended enemy")
 			continue
 
 		if distance < closest_distance:

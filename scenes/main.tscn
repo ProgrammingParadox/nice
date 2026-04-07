@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2x0hhj5iv5a8" path="res://assets/tileset_test_specular.png" id="4_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://ukpj28cyb6rb" path="res://assets/tileset_2.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bc5xvnk87xudt" path="res://scenes/player.tscn" id="7_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dtcmlo3dkksub" path="res://scenes/enemy.tscn" id="9_85g3d"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kfwk1"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -38,9 +38,6 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_nq4aq")
 sources/1 = SubResource("TileSetAtlasSource_choun")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
-size = Vector2(46, 46)
-
 [node name="Node2D" type="Node2D" unique_id=790163914]
 script = ExtResource("1_sugp2")
 
@@ -65,80 +62,11 @@ position = Vector2(1302, -175)
 [node name="Enemies" type="Node2D" parent="." unique_id=2033587907]
 unique_name_in_owner = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Enemies" unique_id=762673375]
+[node name="CharacterBody2D" parent="Enemies" unique_id=1756442962 instance=ExtResource("9_85g3d")]
 position = Vector2(1548, -66)
-collision_layer = 4
-collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D" unique_id=546506713]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
+[node name="CharacterBody2D2" parent="Enemies" unique_id=1584770221 instance=ExtResource("9_85g3d")]
+position = Vector2(1917, -642)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D" unique_id=1421565386]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="CharacterBody2D4" type="CharacterBody2D" parent="Enemies" unique_id=742457866]
-position = Vector2(1451, -387)
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D4" unique_id=2070919444]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D4" unique_id=1190138317]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="CharacterBody2D5" type="CharacterBody2D" parent="Enemies" unique_id=1706363859]
-position = Vector2(1526, -505)
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D5" unique_id=639425173]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D5" unique_id=1323669881]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="CharacterBody2D6" type="CharacterBody2D" parent="Enemies" unique_id=1082585968]
-position = Vector2(1919, -643)
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D6" unique_id=2077137864]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D6" unique_id=1086752739]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="Enemies" unique_id=1092003789]
-position = Vector2(1467, -178)
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D2" unique_id=1464324439]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D2" unique_id=1115191447]
-shape = SubResource("RectangleShape2D_choun")
-
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="Enemies" unique_id=1095718328]
-position = Vector2(1534, -304)
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D3" unique_id=1267726057]
-self_modulate = Color(1, 0.47000003, 0.47000003, 1)
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("9_85g3d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D3" unique_id=636374638]
-shape = SubResource("RectangleShape2D_choun")
+[node name="CharacterBody2D3" parent="Enemies" unique_id=1912552232 instance=ExtResource("9_85g3d")]
+position = Vector2(1408, -498)
