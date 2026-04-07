@@ -42,7 +42,7 @@ func physics_update(delta: float) -> void:
 	else:
 		player.position = attacking_position
 
-		if (attacking_reference != null):
+		if (attacking_reference != null) and ("is_dead" in attacking_reference):
 			attacking_reference.is_dead = true
 
 		finished.emit(AIRBORNE)
