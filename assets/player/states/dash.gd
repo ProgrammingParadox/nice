@@ -14,6 +14,9 @@ func enter(previous_state_path: String, data := { }) -> void:
 		var enemy = enemies.get(i)
 		var distance = player.position.distance_squared_to(enemy.position)
 
+		if distance < stats.MIN_AUTOAIM_DASH_DISTANCE:
+			continue
+
 		# Check if aim-assist would be useful
 		# (like, if there's a clear line of sight to
 		# the enemy)

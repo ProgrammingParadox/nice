@@ -78,6 +78,45 @@ texture = ExtResource("9_85g3d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D" unique_id=1421565386]
 shape = SubResource("RectangleShape2D_choun")
 
+[node name="CharacterBody2D4" type="CharacterBody2D" parent="Enemies" unique_id=742457866]
+position = Vector2(1451, -387)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D4" unique_id=2070919444]
+self_modulate = Color(1, 0.47000003, 0.47000003, 1)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("9_85g3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D4" unique_id=1190138317]
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="Enemies" unique_id=1706363859]
+position = Vector2(1526, -505)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D5" unique_id=639425173]
+self_modulate = Color(1, 0.47000003, 0.47000003, 1)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("9_85g3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D5" unique_id=1323669881]
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="CharacterBody2D6" type="CharacterBody2D" parent="Enemies" unique_id=1082585968]
+position = Vector2(1451, -620)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/CharacterBody2D6" unique_id=2077137864]
+self_modulate = Color(1, 0.47000003, 0.47000003, 1)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("9_85g3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/CharacterBody2D6" unique_id=1086752739]
+shape = SubResource("RectangleShape2D_choun")
+
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="Enemies" unique_id=1092003789]
 position = Vector2(1467, -178)
 collision_layer = 4

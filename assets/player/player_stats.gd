@@ -12,3 +12,4 @@ extends Resource
 @export var AIR_FRICTION = 0.9
 @export var DASH_VELOCITY = 500.0
 @export var MAX_AUTOAIM_DASH_DISTANCE = 500.0
+@export var MIN_AUTOAIM_DASH_DISTANCE = 50.0
