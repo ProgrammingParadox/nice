@@ -49,7 +49,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 	# no enemies, or a bug :/
 	if closest_ref == null:
-		print("no closest_ref")
+		print("no closest_ref", player.position)
 		finished.emit(AIRBORNE)
 		return
 
