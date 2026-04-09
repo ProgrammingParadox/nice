@@ -52,6 +52,8 @@ func find_dash_candidate() -> CharacterBody2D:
 	if typeof(closest_ref) == TYPE_NIL:
 		return null
 
+	closest_ref.is_dash_candidate = true
+
 	return closest_ref
 
 
@@ -80,9 +82,7 @@ func physics_update(delta: float) -> void:
 
 	player.move_and_slide()
 
-	var dash_candidate = find_dash_candidate()
-	if dash_candidate != null:
-		dash_candidate.is_dash_candidate = true
+	find_dash_candidate()
 
 	if not Input.is_action_pressed("up"):
 		context.gravity_mod = 1.5
