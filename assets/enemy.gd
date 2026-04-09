@@ -12,6 +12,9 @@ func _process(delta: float) -> void:
 	else:
 		modulate = Color(255.0, 0.0, 0.0)
 
+	if Input.is_action_just_pressed("debug_reset"):
+		is_dead = false
+
 
 func _physics_process(delta: float) -> void:
 	pass
