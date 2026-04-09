@@ -18,7 +18,10 @@ func enter(previous_state_path: String, data := { }) -> void:
 			continue
 
 		var distance = player.position.distance_to(enemy.position)
-		if distance < stats.MIN_AUTOAIM_DASH_DISTANCE:
+		if (
+			distance < stats.MIN_AUTOAIM_DASH_DISTANCE or
+			distance > stats.MAX_AUTOAIM_DASH_DISTANCE
+		):
 			continue
 
 		# Check if aim-assist would be useful
@@ -45,14 +48,8 @@ func enter(previous_state_path: String, data := { }) -> void:
 	# aim-assist can't help
 
 	# no enemies, or a bug :/
-	if typeof(closest_ref) == TYPE_NIL:
+	if closest_ref == null:
 		print("no closest_ref")
-		finished.emit(AIRBORNE)
-		return
-
-	var distance = closest_ref.position.distance_to(player.position)
-	if distance > stats.MAX_AUTOAIM_DASH_DISTANCE:
-		print("too far to dash!")
 		finished.emit(AIRBORNE)
 		return
 
