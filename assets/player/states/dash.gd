@@ -5,44 +5,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 	context.jumps = 1
 
-	# I don't like this at all, but we're in different scenes
-	var enemies = get_node("../../../Enemies").get_children()
-
-	var ray: RayCast2D = player.get_node("rays/dash_ray")
-
-	var closest_distance = INF
-	var closest_ref
-	for i in range(len(enemies)):
-		var enemy = enemies.get(i)
-		if enemy.is_dead == true:
-			continue
-
-		var distance = player.position.distance_to(enemy.position)
-		if (
-			distance < stats.MIN_AUTOAIM_DASH_DISTANCE or
-			distance > stats.MAX_AUTOAIM_DASH_DISTANCE
-		):
-			continue
-
-		# Check if aim-assist would be useful
-		# (like, if there's a clear line of sight to
-		# the enemy)
-		var intersects = false
-		ray.target_position = enemy.position - player.position
-		ray.force_raycast_update()
-		if ray.is_colliding():
-			var collision = ray.get_collider()
-			var point = ray.get_collision_point()
-
-			if collision == enemy:
-				intersects = true
-
-		if not intersects:
-			continue
-
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_ref = enemy
+	var closest_ref = player.find_dash_candidate()
 
 	# @TODO: make direction pressed be the default dash if
 	# aim-assist can't help
@@ -52,6 +15,8 @@ func enter(previous_state_path: String, data := { }) -> void:
 		print("no closest_ref", player.position)
 		finished.emit(AIRBORNE)
 		return
+
+	#closest_ref.is_dash_candidate = true
 
 	#var direction: Vector2 = (closest_ref.position - player.position).normalized()
 

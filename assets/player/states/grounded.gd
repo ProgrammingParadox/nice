@@ -1,6 +1,9 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := { }) -> void:
+	for e in context.enemies:
+		e.is_dash_candidate = false
+
 	if context.time_since_jump_pressed < 0.1:
 		finished.emit(JUMP)
 

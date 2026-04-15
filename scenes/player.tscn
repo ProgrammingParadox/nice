@@ -98,3 +98,5 @@ script = ExtResource("12_3v2ag")
 [node name="dash_ray" type="RayCast2D" parent="rays" unique_id=1388442682]
 collision_mask = 4
 collide_with_areas = true
+
+[node name="dash_indicator" type="Sprite2D" parent="." unique_id=723203807]

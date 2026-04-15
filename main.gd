@@ -33,3 +33,5 @@ func _process(delta: float) -> void:
 			1,
 		),
 	)
+
+	$Player.context.enemies = $Enemies.get_children()
