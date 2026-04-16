@@ -6,11 +6,11 @@ var is_dead := false
 
 func _process(delta: float) -> void:
 	if is_dash_candidate and not is_dead:
-		modulate = Color(0.0, 255.0, 0.0)
+		set_modulate(Color(0.7, 1.5, 0.7))
 	elif is_dead:
-		modulate = Color(0.0, 0.0, 255.0)
+		set_modulate(Color(0.3, 0.3, 0.3))
 	else:
-		modulate = Color(255.0, 0.0, 0.0)
+		set_modulate(Color(1.0, 1.0, 1.0))
 
 	if Input.is_action_just_pressed("debug_reset"):
 		is_dead = false
