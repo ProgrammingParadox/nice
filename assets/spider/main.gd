@@ -9,6 +9,8 @@ extends Node2D
 	[$Skeleton2D/rays/raycast_6, $targets/target_6, $transitional_targets/t_target_6],
 ]
 
+var enemies: Array[Node] = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +31,29 @@ func _process(delta: float) -> void:
 
 	var player = get_parent().get_node("Player")
 
-	$Skeleton2D.global_position = lerp($Skeleton2D.global_position, player.global_position, 0.01)
+	var closest_ref
+	var closest_dist = INF
+	for enemy in enemies:
+		if not enemy.is_dead:
+			continue
+
+		var dist = enemy.position.distance_to($Skeleton2D.position)
+
+		if dist < closest_dist:
+			closest_dist = dist
+			closest_ref = enemy
+
+	if not closest_ref:
+		closest_ref = player
+
+	if closest_ref:
+		$Skeleton2D.global_position = lerp($Skeleton2D.global_position, closest_ref.global_position, 0.01)
+
+	if closest_dist < 10:
+		if "is_dead" in closest_ref:
+			closest_ref.is_dead = false
+		else:
+			print("dead")
 
 	for ray_pair in rays:
 		var ray = ray_pair[0]

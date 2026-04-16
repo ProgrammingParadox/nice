@@ -35,3 +35,4 @@ func _process(delta: float) -> void:
 	)
 
 	$Player.context.enemies = $Enemies.get_children()
+	$Entity.enemies = $Enemies.get_children()
