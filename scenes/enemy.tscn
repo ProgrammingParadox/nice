@@ -7,7 +7,7 @@
 size = Vector2(46, 46)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1756442962]
-collision_layer = 4
+collision_layer = 6
 collision_mask = 0
 script = ExtResource("1_md0e3")
 
