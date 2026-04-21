@@ -104,7 +104,6 @@ func _process(delta: float) -> void:
 			(distance > 80) or
 			(target.global_position.distance_to(t_target.global_position) > 80)
 		):
-			print(t_target.global_position)
 			t_target.global_position = closest_point
 
 # for raycasts
