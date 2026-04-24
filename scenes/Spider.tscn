@@ -106,9 +106,6 @@ modifications/5 = SubResource("SkeletonModification2DCCDIK_l7dlg")
 [sub_resource type="CanvasTexture" id="CanvasTexture_tbgi4"]
 diffuse_texture = ExtResource("2_l7dlg")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fdnuv"]
-radius = 72.64
-
 [node name="Entity" type="Node2D" unique_id=541092898]
 script = ExtResource("1_fdnuv")
 
@@ -325,63 +322,30 @@ target_position = Vector2(-81.352394, -72.730934)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="ShapeCast2D_1" type="ShapeCast2D" parent="Skeleton2D/rays" unique_id=1054417726]
-z_index = -3
-position = Vector2(-74, -75)
-shape = SubResource("CircleShape2D_fdnuv")
-target_position = Vector2(0, 0)
-collision_mask = 7
-
 [node name="raycast_2" type="RayCast2D" parent="Skeleton2D/rays" unique_id=238616490]
-visible = false
 rotation = 0.03921803
 target_position = Vector2(93.18162, -73.71014)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="ShapeCast2D_2" type="ShapeCast2D" parent="Skeleton2D/rays" unique_id=514582452]
-z_index = -3
-position = Vector2(75, -74)
-shape = SubResource("CircleShape2D_fdnuv")
-target_position = Vector2(0, 0)
-collision_mask = 7
-
 [node name="raycast_3" type="RayCast2D" parent="Skeleton2D/rays" unique_id=739314264]
-visible = false
 target_position = Vector2(88, 77)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="ShapeCast2D_3" type="ShapeCast2D" parent="Skeleton2D/rays" unique_id=2085793335]
-z_index = -3
-position = Vector2(73, 73)
-shape = SubResource("CircleShape2D_fdnuv")
-target_position = Vector2(0, 0)
-collision_mask = 7
-
 [node name="raycast_4" type="RayCast2D" parent="Skeleton2D/rays" unique_id=770655796]
-visible = false
 rotation = 0.024035016
 target_position = Vector2(-92.97786, 85.25914)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="ShapeCast2D_4" type="ShapeCast2D" parent="Skeleton2D/rays" unique_id=1668089054]
-z_index = -3
-position = Vector2(-74, 73)
-shape = SubResource("CircleShape2D_fdnuv")
-target_position = Vector2(0, 0)
-collision_mask = 7
-
 [node name="raycast_5" type="RayCast2D" parent="Skeleton2D/rays" unique_id=1727430927]
-visible = false
 rotation = 0.024035016
 target_position = Vector2(-133.00966, 1.1969273)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="raycast_6" type="RayCast2D" parent="Skeleton2D/rays" unique_id=1428274114]
-visible = false
 rotation = 0.024035016
 target_position = Vector2(134.96103, -3.2444153)
 collision_mask = 2
@@ -395,7 +359,6 @@ position = Vector2(-15, -15)
 rotation = 2.26302
 scale = Vector2(0.99993277, 0.99993277)
 rest = Transform2D(0.18009126, 0.9835705, -0.9835705, 0.18009126, -15, -15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_1" unique_id=58516350]
 custom_minimum_size = Vector2(5, 5)
@@ -416,7 +379,6 @@ position = Vector2(28.941845, 34.75122)
 rotation = -1.4989078
 scale = Vector2(1.0000012, 1.0000012)
 rest = Transform2D(0.96475744, 0.26311666, -0.26311666, 0.96475744, 14.00028, 14.000305)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_1/calf_1" unique_id=441556608]
 custom_minimum_size = Vector2(5, 5)
@@ -450,7 +412,6 @@ position = Vector2(15, -15)
 rotation = 0.4768087
 scale = Vector2(0.9999525, 0.9999525)
 rest = Transform2D(0.10092655, 0.9948355, -0.9948355, 0.10092655, 15, -15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_2" unique_id=2022643056]
 custom_minimum_size = Vector2(5, 5)
@@ -467,7 +428,6 @@ position = Vector2(27.995975, -39.19771)
 rotation = 1.6336001
 scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(0.83957034, -0.5432499, 0.5432499, 0.83957034, 16.000385, -16.000343)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_2/calf_2" unique_id=1814703986]
 custom_minimum_size = Vector2(5, 5)
@@ -497,7 +457,6 @@ position = Vector2(15, 15)
 rotation = 1.0224347
 scale = Vector2(0.9999689, 0.9999689)
 rest = Transform2D(0.060956508, 0.99809116, -0.99809116, 0.060956508, 15, 15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_3" unique_id=1404224847]
 custom_minimum_size = Vector2(5, 5)
@@ -514,7 +473,6 @@ position = Vector2(32.42865, -40.318184)
 rotation = 0.9299946
 scale = Vector2(1.0000008, 1.0000008)
 rest = Transform2D(0.91111016, -0.41216373, 0.41216373, 0.91111016, 20.000614, -15.000338)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_3/calf_3" unique_id=761750940]
 custom_minimum_size = Vector2(5, 5)
@@ -544,7 +502,6 @@ position = Vector2(-15, 15)
 rotation = 0.7030468
 scale = Vector2(0.9999653, 0.9999653)
 rest = Transform2D(-0.095011994, 0.9954298, -0.9954298, -0.095011994, -15, 15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_4" unique_id=467207374]
 custom_minimum_size = Vector2(5, 5)
@@ -561,7 +518,6 @@ position = Vector2(50.62269, 15.828186)
 rotation = 2.2287014
 scale = Vector2(1.0000002, 1.0000002)
 rest = Transform2D(0.8164698, 0.5773885, -0.5773885, 0.8164698, 23.000647, 10.0003395)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_4/calf_4" unique_id=1145550182]
 custom_minimum_size = Vector2(5, 5)
@@ -593,7 +549,6 @@ position = Vector2(-18.999998, -1.0000004)
 rotation = 2.8557878
 scale = Vector2(0.99994326, 0.99994326)
 rest = Transform2D(-0.095011994, 0.9954298, -0.9954298, -0.095011994, -15, 15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_5" unique_id=1310245994]
 custom_minimum_size = Vector2(5, 5)
@@ -610,7 +565,6 @@ position = Vector2(50.624165, 15.828877)
 rotation = 0.2457477
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.8164698, 0.5773885, -0.5773885, 0.8164698, 23.000647, 10.0003395)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_5/calf_5" unique_id=1371699661]
 custom_minimum_size = Vector2(5, 5)
@@ -642,7 +596,6 @@ position = Vector2(19, -0.9999995)
 rotation = -0.36539888
 scale = Vector2(0.99995077, 0.99995077)
 rest = Transform2D(-0.095011994, 0.9954298, -0.9954298, -0.095011994, -15, 15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_6" unique_id=1157112586]
 custom_minimum_size = Vector2(5, 5)
@@ -659,7 +612,6 @@ position = Vector2(50.624165, 15.828877)
 rotation = 0.2457477
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.8164698, 0.5773885, -0.5773885, 0.8164698, 23.000647, 10.0003395)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_6/calf_6" unique_id=470161789]
 custom_minimum_size = Vector2(5, 5)
