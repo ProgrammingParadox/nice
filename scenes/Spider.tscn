@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c3yihenu8xs7"]
 
 [ext_resource type="Script" uid="uid://dxi73upxbqdxx" path="res://assets/spider/main.gd" id="1_fdnuv"]
-[ext_resource type="Script" uid="uid://0nwyysh7ckgh" path="res://assets/target.gd" id="2_6bblw"]
 [ext_resource type="Texture2D" uid="uid://6vq1hp86vvqq" path="res://icon.svg" id="2_l7dlg"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_6bblw"]
@@ -121,13 +120,10 @@ script = ExtResource("1_fdnuv")
 
 [node name="targets" type="Node2D" parent="." unique_id=771727082]
 
-[node name="target_1" type="Node2D" parent="targets" unique_id=2110670170 node_paths=PackedStringArray("transitional_target")]
+[node name="target_1" type="Node2D" parent="targets" unique_id=2110670170]
 position = Vector2(-85, -73)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_1")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_1" unique_id=1857989060]
-z_index = 3
 custom_minimum_size = Vector2(5, 5)
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,12 +134,10 @@ offset_right = 2.5
 offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 1, 1)
+color = Color(0, 1, 1, 1)
 
-[node name="target_2" type="Node2D" parent="targets" unique_id=1948628281 node_paths=PackedStringArray("transitional_target")]
+[node name="target_2" type="Node2D" parent="targets" unique_id=1948628281]
 position = Vector2(97, -71)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_2")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_2" unique_id=924968162]
 custom_minimum_size = Vector2(5, 5)
@@ -158,10 +152,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 1, 1)
 
-[node name="target_3" type="Node2D" parent="targets" unique_id=546792242 node_paths=PackedStringArray("transitional_target")]
+[node name="target_3" type="Node2D" parent="targets" unique_id=546792242]
 position = Vector2(91, 80)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_3")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_3" unique_id=1699798000]
 custom_minimum_size = Vector2(5, 5)
@@ -176,10 +168,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 1, 1)
 
-[node name="target_4" type="Node2D" parent="targets" unique_id=74464092 node_paths=PackedStringArray("transitional_target")]
+[node name="target_4" type="Node2D" parent="targets" unique_id=74464092]
 position = Vector2(-98, 84)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_4")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_4" unique_id=180362479]
 custom_minimum_size = Vector2(5, 5)
@@ -194,10 +184,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 1, 1)
 
-[node name="target_5" type="Node2D" parent="targets" unique_id=514493144 node_paths=PackedStringArray("transitional_target")]
+[node name="target_5" type="Node2D" parent="targets" unique_id=514493144]
 position = Vector2(-135, -2)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_5")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_5" unique_id=2036649531]
 custom_minimum_size = Vector2(5, 5)
@@ -212,10 +200,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 1, 1)
 
-[node name="target_6" type="Node2D" parent="targets" unique_id=1048240223 node_paths=PackedStringArray("transitional_target")]
+[node name="target_6" type="Node2D" parent="targets" unique_id=1048240223]
 position = Vector2(134, 2)
-script = ExtResource("2_6bblw")
-transitional_target = NodePath("../../transitional_targets/t_target_6")
 
 [node name="ColorRect" type="ColorRect" parent="targets/target_6" unique_id=790505806]
 custom_minimum_size = Vector2(5, 5)
@@ -453,7 +439,7 @@ rotation = 0.45553094
 scale = Vector2(9.628408, 1)
 
 [node name="foot_1" type="Bone2D" parent="Skeleton2D/hip/thigh_1/calf_1" unique_id=1740204247]
-position = Vector2(43.273106, 16.714254)
+position = Vector2(40.7049, 19.029074)
 rest = Transform2D(1, 0, 0, 1, 14.000001, 7.999999)
 
 [node name="ColorRect" type="ColorRect" parent="Skeleton2D/hip/thigh_1/calf_1/foot_1" unique_id=1675236694]

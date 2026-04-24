@@ -64,8 +64,8 @@ func _process(delta: float) -> void:
 		var target = ray_pair[1]
 		var t_target = ray_pair[2]
 
-		#if target.global_position.distance_to(t_target.global_position) > 1:
-		#target.global_position = lerp(target.global_position, t_target.global_position, 0.2)
+		if target.global_position.distance_to(t_target.global_position) > 1:
+			target.global_position = lerp(target.global_position, t_target.global_position, 0.2)
 
 		if ray == null || target == null:
 			continue
