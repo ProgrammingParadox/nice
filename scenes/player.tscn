@@ -100,3 +100,9 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="dash_indicator" type="Sprite2D" parent="." unique_id=723203807]
+
+[node name="dash_path_indicator" type="Line2D" parent="." unique_id=868542353]
+z_index = -1
+points = PackedVector2Array(81, 31, 0, 0)
+width = 5.0
+default_color = Color(0.88, 0.1672, 0.1672, 0.5411765)

@@ -25,7 +25,7 @@ var right_wall_area_collided: bool:
 		)
 
 
-func find_dash_candidate() -> CharacterBody2D:
+func find_dash_candidate(start_position: Vector2 = self.position, criterea: Callable = func(_e): return true) -> CharacterBody2D:
 	# I don't like this at all, but we're in different scenes
 
 	#var enemies = get_node("../../Enemies").get_children()
@@ -42,18 +42,21 @@ func find_dash_candidate() -> CharacterBody2D:
 		if enemy.is_dead:
 			continue
 
-		var distance = self.position.distance_to(enemy.position)
+		var distance = start_position.distance_to(enemy.position)
 		if (
 			distance < stats.MIN_AUTOAIM_DASH_DISTANCE or
 			distance > stats.MAX_AUTOAIM_DASH_DISTANCE
 		):
 			continue
 
+		if criterea != null and not criterea.call(enemy):
+			continue
+
 		# Check if aim-assist would be useful
 		# (like, if there's a clear line of sight to
 		# the enemy)
 		var intersects = false
-		ray.target_position = enemy.position - self.position
+		ray.target_position = enemy.position - start_position
 		ray.force_raycast_update()
 		if ray.is_colliding():
 			var collision = ray.get_collider()
@@ -76,3 +79,24 @@ func find_dash_candidate() -> CharacterBody2D:
 	closest_ref.is_dash_candidate = true
 
 	return closest_ref
+
+
+func find_dash_path(starting_position: Vector2 = self.position, max_depth: int = 5) -> Array[Vector2]:
+	var points: Array[Vector2] = [starting_position]
+	while points.size() < max_depth:
+		var dash_candidate = find_dash_candidate(points.back(), func(e): return not points.has(e.position))
+
+		if dash_candidate == null:
+			return points
+
+		points.append(dash_candidate.position)
+
+	return points
+
+
+func dash_path_to_lines(path: Array[Vector2]):
+	var dash_path_indicator = $dash_path_indicator
+	dash_path_indicator.clear_points()
+	for point in path:
+		# self.position is kept here because the dash path is relative to the player's position
+		dash_path_indicator.add_point(point - self.position)
