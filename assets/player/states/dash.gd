@@ -1,5 +1,8 @@
 extends PlayerState
 
+var path: Array[Vector2]
+
+
 func enter(previous_state_path: String, data := { }) -> void:
 	#player.velocity.y = stats.JUMP_VELOCITY
 
@@ -7,14 +10,14 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 	var closest_ref = player.find_dash_candidate()
 
-	# @TODO: make direction pressed be the default dash if
-	# aim-assist can't help
-
 	# no enemies, or a bug :/
 	if closest_ref == null:
 		print("no closest_ref", player.position)
 		finished.emit(AIRBORNE)
 		return
+
+	if data.has("path"):
+		path = data.path
 
 	#closest_ref.is_dash_candidate = true
 
@@ -32,6 +35,7 @@ func enter(previous_state_path: String, data := { }) -> void:
 		{
 			"position": closest_ref.position,
 			"reference": closest_ref,
+			"path": path,
 		},
 	)
 

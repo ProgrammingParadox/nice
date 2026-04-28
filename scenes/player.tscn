@@ -39,6 +39,10 @@ size = Vector2(7.75, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(8, 10)
 
+[sub_resource type="Curve" id="Curve_3v2ag"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D" unique_id=1835408727]
 script = ExtResource("1_ur7pv")
 stats = SubResource("Resource_jkv2x")
@@ -105,4 +109,5 @@ collide_with_areas = true
 z_index = -1
 points = PackedVector2Array(81, 31, 0, 0)
 width = 2.0
+width_curve = SubResource("Curve_3v2ag")
 default_color = Color(0.88, 0.1672, 0.1672, 0.5411765)

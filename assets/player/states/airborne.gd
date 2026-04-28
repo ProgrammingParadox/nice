@@ -5,6 +5,8 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 
 func exit() -> void:
+	player.clear_dash_path()
+
 	context.gravity_mod = 1
 
 
@@ -82,4 +84,13 @@ func physics_update(delta: float) -> void:
 
 	if Input.is_action_just_pressed("dash"):
 		finished.emit(DASH)
+		return
+
+	if Input.is_action_just_pressed("take_path"):
+		finished.emit(
+			DASH,
+			{
+				"path": points,
+			},
+		)
 		return

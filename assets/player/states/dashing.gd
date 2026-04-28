@@ -3,6 +3,8 @@ extends PlayerState
 var attacking_position: Vector2
 var attacking_reference
 
+var path: Array[Vector2]
+
 
 func enter(previous_state_path: String, data := { }) -> void:
 	if not data.has("position"):
@@ -13,6 +15,9 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 	if data.has("reference"):
 		attacking_reference = data.reference
+
+	if data.has("path"):
+		path = data.path
 
 	attacking_position = data.position
 
@@ -45,7 +50,10 @@ func physics_update(delta: float) -> void:
 		if (attacking_reference != null) and ("is_dead" in attacking_reference):
 			attacking_reference.is_dead = true
 
-		finished.emit(AIRBORNE)
+		if path.size() != 0:
+			finished.emit(DASH)
+		else:
+			finished.emit(AIRBORNE)
 
 	for action in cancel_actions:
 		if Input.is_action_pressed(action):
@@ -57,4 +65,7 @@ func physics_update(delta: float) -> void:
 		if (attacking_reference != null) and ("is_dead" in attacking_reference):
 			attacking_reference.is_dead = true
 
-		finished.emit(AIRBORNE)
+		if path.size() != 0:
+			finished.emit(DASH)
+		else:
+			finished.emit(AIRBORNE)
