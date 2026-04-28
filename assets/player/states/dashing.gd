@@ -19,6 +19,8 @@ func enter(previous_state_path: String, data := { }) -> void:
 	if data.has("path"):
 		path = data.path
 
+		path.pop_back()
+
 	attacking_position = data.position
 
 	var direction: Vector2 = (attacking_position - player.position).normalized()
@@ -69,3 +71,6 @@ func physics_update(delta: float) -> void:
 			finished.emit(DASH)
 		else:
 			finished.emit(AIRBORNE)
+
+	var points: Array[Vector2] = player.find_dash_path()
+	player.dash_path_to_lines(points)

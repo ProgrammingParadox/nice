@@ -5,8 +5,6 @@ func enter(previous_state_path: String, data := { }) -> void:
 
 
 func exit() -> void:
-	player.clear_dash_path()
-
 	context.gravity_mod = 1
 
 

@@ -89,7 +89,7 @@ func find_dash_candidate(
 	return closest_ref
 
 
-func find_dash_path(starting_position: Vector2 = self.position, max_depth: int = 5) -> Array[Vector2]:
+func find_dash_path(starting_position: Vector2 = self.position, max_depth: int = 50) -> Array[Vector2]:
 	var points: Array[Vector2] = [starting_position]
 	while points.size() < max_depth:
 		var dash_candidate = find_dash_candidate(points.back(), func(e): return not points.has(e.position), false)
