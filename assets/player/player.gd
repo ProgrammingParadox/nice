@@ -25,7 +25,11 @@ var right_wall_area_collided: bool:
 		)
 
 
-func find_dash_candidate(start_position: Vector2 = self.position, criterea: Callable = func(_e): return true) -> CharacterBody2D:
+func find_dash_candidate(
+		start_position: Vector2 = self.position,
+		criterea: Callable = func(_e): return true,
+		set_candidacy: bool = true,
+) -> CharacterBody2D:
 	# I don't like this at all, but we're in different scenes
 
 	#var enemies = get_node("../../Enemies").get_children()
@@ -37,7 +41,9 @@ func find_dash_candidate(start_position: Vector2 = self.position, criterea: Call
 	var closest_ref: CharacterBody2D
 	for i in range(len(enemies)):
 		var enemy = enemies.get(i)
-		enemy.is_dash_candidate = false
+
+		if set_candidacy:
+			enemy.is_dash_candidate = false
 
 		if enemy.is_dead:
 			continue
@@ -56,6 +62,7 @@ func find_dash_candidate(start_position: Vector2 = self.position, criterea: Call
 		# (like, if there's a clear line of sight to
 		# the enemy)
 		var intersects = false
+		ray.global_position = start_position
 		ray.target_position = enemy.position - start_position
 		ray.force_raycast_update()
 		if ray.is_colliding():
@@ -76,7 +83,8 @@ func find_dash_candidate(start_position: Vector2 = self.position, criterea: Call
 	if typeof(closest_ref) == TYPE_NIL:
 		return null
 
-	closest_ref.is_dash_candidate = true
+	if set_candidacy:
+		closest_ref.is_dash_candidate = true
 
 	return closest_ref
 
@@ -84,7 +92,7 @@ func find_dash_candidate(start_position: Vector2 = self.position, criterea: Call
 func find_dash_path(starting_position: Vector2 = self.position, max_depth: int = 5) -> Array[Vector2]:
 	var points: Array[Vector2] = [starting_position]
 	while points.size() < max_depth:
-		var dash_candidate = find_dash_candidate(points.back(), func(e): return not points.has(e.position))
+		var dash_candidate = find_dash_candidate(points.back(), func(e): return not points.has(e.position), false)
 
 		if dash_candidate == null:
 			return points
