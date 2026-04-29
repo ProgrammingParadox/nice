@@ -97,7 +97,7 @@ func find_dash_path(starting_position: Vector2 = self.position, max_depth: int =
 		if dash_candidate == null:
 			return points
 
-		points.append(dash_candidate.position)
+		points.append(dash_candidate.global_position)
 
 	return points
 
@@ -111,4 +111,4 @@ func dash_path_to_lines(path: Array[Vector2]):
 	clear_dash_path()
 	for point in path:
 		# self.position is kept here because the dash path is relative to the player's position
-		dash_path_indicator.add_point(point - self.position)
+		dash_path_indicator.add_point(self.to_local(point))
