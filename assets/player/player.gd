@@ -27,7 +27,7 @@ var right_wall_area_collided: bool:
 
 func find_dash_candidate(
 		start_position: Vector2 = self.position,
-		criterea: Callable = func(_e): return true,
+		criteria: Callable = func(_e): return true,
 		set_candidacy: bool = true,
 ) -> CharacterBody2D:
 	# I don't like this at all, but we're in different scenes
@@ -55,7 +55,7 @@ func find_dash_candidate(
 		):
 			continue
 
-		if criterea != null and not criterea.call(enemy):
+		if criteria != null and not criteria.call(enemy):
 			continue
 
 		# Check if aim-assist would be useful
@@ -63,7 +63,7 @@ func find_dash_candidate(
 		# the enemy)
 		var intersects = false
 		ray.global_position = start_position
-		ray.target_position = enemy.position - start_position
+		ray.target_position = ray.to_local(enemy.global_position) # enemy.position - start_position
 		ray.force_raycast_update()
 		if ray.is_colliding():
 			var collision = ray.get_collider()
