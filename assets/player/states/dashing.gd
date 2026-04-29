@@ -72,5 +72,7 @@ func physics_update(delta: float) -> void:
 		else:
 			finished.emit(AIRBORNE)
 
-	var points: Array[Vector2] = player.find_dash_path()
-	player.dash_path_to_lines(points)
+	if context.dash_path_handler:
+		await context.dash_path_handler.ready
+		var points: Array[Vector2] = context.dash_path_handler.find_dash_path()
+		context.dash_path_handler.dash_path_to_lines(points)

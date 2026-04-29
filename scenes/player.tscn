@@ -39,10 +39,6 @@ size = Vector2(7.75, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(8, 10)
 
-[sub_resource type="Curve" id="Curve_3v2ag"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [node name="Player" type="CharacterBody2D" unique_id=1835408727]
 script = ExtResource("1_ur7pv")
 stats = SubResource("Resource_jkv2x")
@@ -96,18 +92,3 @@ script = ExtResource("11_d2wvv")
 
 [node name="dashing" type="Node" parent="StateMachine" unique_id=774404595]
 script = ExtResource("12_3v2ag")
-
-[node name="rays" type="Node2D" parent="." unique_id=615842004]
-
-[node name="dash_ray" type="RayCast2D" parent="rays" unique_id=1388442682]
-collision_mask = 4
-collide_with_areas = true
-
-[node name="dash_indicator" type="Sprite2D" parent="." unique_id=723203807]
-
-[node name="dash_path_indicator" type="Line2D" parent="." unique_id=868542353]
-z_index = -1
-points = PackedVector2Array(81, 31, 0, 0)
-width = 2.0
-width_curve = SubResource("Curve_3v2ag")
-default_color = Color(0.88, 0.1672, 0.1672, 0.5411765)

@@ -2,7 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Player.context.dash_path_handler = $dash_path_handler
 
 
 func lerp(v0: float, v1: float, t: float):

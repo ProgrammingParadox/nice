@@ -4,7 +4,9 @@ func enter(previous_state_path: String, data := { }) -> void:
 	for e in context.enemies:
 		e.is_dash_candidate = false
 
-	player.clear_dash_path()
+	if context.dash_path_handler:
+		await context.dash_path_handler.ready
+		context.dash_path_handler.clear_dash_path()
 
 	if context.time_since_jump_pressed < 0.1:
 		finished.emit(JUMP)

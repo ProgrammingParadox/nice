@@ -3,6 +3,8 @@ extends Resource
 
 var enemies: Array[Node] = []
 
+var dash_path_handler: DashPathHandler # set by parent node
+
 var time_since_on_ground = INF
 var time_since_left_wall_touch = INF
 var time_since_right_wall_touch = INF

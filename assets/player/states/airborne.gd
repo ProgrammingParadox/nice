@@ -35,8 +35,11 @@ func physics_update(delta: float) -> void:
 
 	player.find_dash_candidate()
 
-	var points: Array[Vector2] = player.find_dash_path()
-	player.dash_path_to_lines(points)
+	var points: Array[Vector2]
+	if context.dash_path_handler:
+		await context.dash_path_handler.ready
+		points = context.dash_path_handler.find_dash_path()
+		context.dash_path_handler.dash_path_to_lines(points)
 
 	if not Input.is_action_pressed("up"):
 		context.gravity_mod = 1.5
