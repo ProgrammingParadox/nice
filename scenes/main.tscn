@@ -168,8 +168,9 @@ position = Vector2(2396, 92)
 [node name="CharacterBody2D34" parent="Enemies" unique_id=309387465 instance=ExtResource("9_85g3d")]
 position = Vector2(2328, 134)
 
-[node name="dash_path_handler" type="Node2D" parent="." unique_id=2022363351]
+[node name="dash_path_handler" type="Node2D" parent="." unique_id=2022363351 node_paths=PackedStringArray("ray")]
 script = ExtResource("10_choun")
+ray = NodePath("../rays/dash_ray")
 
 [node name="dash_path_indicator" type="Line2D" parent="dash_path_handler" unique_id=1336154436]
 z_index = -1
