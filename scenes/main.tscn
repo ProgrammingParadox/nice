@@ -44,7 +44,6 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_choun"]
-offsets = PackedFloat32Array(0, 0.27166668)
 colors = PackedColorArray(1, 0, 0, 0.40392157, 1, 1, 1, 0)
 
 [node name="Node2D" type="Node2D" unique_id=790163914]
